@@ -1,3 +1,1 @@
-#!/bin/sh
-
-#run websocketd with netstat as command
+./websocketd --port 8088 --devconsole ./netstat-srv.sh
