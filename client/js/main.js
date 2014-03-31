@@ -12,6 +12,7 @@ angular.module('remoteDev', ['ngRoute'])
             
         $locationProvider.html5Mode(true);
     })
+
     .controller('TestCtrl', ['$scope', '$window', function ($scope, $window) {
         'use strict';
         var sock = null; 
@@ -31,9 +32,11 @@ angular.module('remoteDev', ['ngRoute'])
             sock = new WebSocket('ws://' + host + ':' + port);
             sock.onmessage = incoming;
             sock.onopen = function () { $scope.log += 'opened\n'; };
+            sock.onclose = function () { $scope.log += 'closed\n'; };
         };
         
         $scope.disconnect = function () {
+            $scope.log += 'closing...\n';
             sock.close();
         };
     }]);
