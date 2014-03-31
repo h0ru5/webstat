@@ -1,15 +1,28 @@
 <div class="jumbotron">
   <div class="container">
     <h1>Netstat viewer</h1>
-    <p>See active network connections below</p>
+    <p>
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="wsHost">Host</label>
+                <input type="text" class="form-control" id="wsHost" placeholder="host" ng-model="host">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="wsPort">Port</label>
+                <input type="number" class="form-control" id="wsPort" placeholder="port" ng-model="port">
+            </div>
+        </form>
+        <button class="btn" ng-click="connect(host,port)">connect</button>
+        <button class="btn btn-alert" ng-click="disconnect()">disconnect</button> 
+    </p>
   </div>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-lg-10">
-            <h2>Netstat</h2>
-            <p>continous netstat output via websocket</p>
+            <h2>Log:</h2>
+            <pre>{{log}}</pre>
         </div>
     </div>
 </div>
