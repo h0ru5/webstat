@@ -13,12 +13,23 @@
             </div>
         </form>
         <button class="btn" ng-click="connect(host,port)">connect</button>
-        <button class="btn btn-alert" ng-click="disconnect()">disconnect</button> 
+        <button class="btn btn-alert" ng-click="disconnect()">disconnect</button>
     </p>
   </div>
 </div>
 
 <div class="container">
+  <div class="row">
+      <div class="col-lg-10">
+          <h2>Connections:</h2>
+          <!-- to be replaced by some nice grid -->
+          <ul ng-repeat="conn in conns">
+            <li>
+              <b>{{conn.lport}}</b>: {{conn.rhost}}:{{conn.rport}} <span ng-bind="conn.state"></span>
+            </li>
+          </ul>
+      </div>
+  </div>
     <div class="row">
         <div class="col-lg-10">
             <h2>Log:</h2>
